@@ -12,6 +12,9 @@ const config: InitialOptionsTsJest = {
       tsconfig: 'tsconfig.test.json',
     },
   },
+  moduleNameMapper: {
+    '^.+\\.svg$': 'jest-svg-transformer',
+  },
 };
 
 export default config;
