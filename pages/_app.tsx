@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Provider store={store}>
+      <title>test</title>
       <Component {...pageProps} />
     </Provider>
   );
