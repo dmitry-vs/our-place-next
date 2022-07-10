@@ -1,0 +1,13 @@
+.game {
+  min-width: 600px;
+}
+
+.fieldActive {
+  background-color: white;
+  opacity: 1;
+}
+
+.fieldInactive {
+  background-color: lightgrey;
+  opacity: 0.3;
+}

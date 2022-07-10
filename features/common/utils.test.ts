@@ -1,7 +1,7 @@
 import { getStateFromLocalStorage, validateNumericInputValue } from './utils';
 import { LocalStorageKeys, ValidationErrors } from './consts';
 import { RootState } from './store';
-import { GAME_INITIAL_STATE } from '../features/game/game-slice';
+import { GAME_INITIAL_STATE } from '../game/game-slice';
 import localforage from 'localforage';
 
 describe('validateNumericInputValue', () => {

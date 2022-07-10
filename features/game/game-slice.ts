@@ -8,7 +8,7 @@ import {
   TicTacToeGameStatuses,
   TicTacToeGameSymbols,
 } from './consts';
-import { RootState } from '../../app/store';
+import { RootState } from '../common/store';
 import { logout } from '../auth/auth-slice';
 import { getTicTacToeGameResult } from './utils';
 

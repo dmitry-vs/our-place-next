@@ -1,6 +1,6 @@
 import { expectSaga } from 'redux-saga-test-plan';
 import { createAppReducer } from '../store';
-import { login } from '../../features/auth/auth-slice';
+import { login } from '../../auth/auth-slice';
 import { localStorageSaga } from './sagas';
 import localforage from 'localforage';
 import { getStateFromLocalStorage } from '../utils';

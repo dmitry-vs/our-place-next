@@ -2,8 +2,8 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas/sagas';
-import { authReducer } from '../features/auth/auth-slice';
-import { gameReducer } from '../features/game/game-slice';
+import { authReducer } from '../auth/auth-slice';
+import { gameReducer } from '../game/game-slice';
 
 export const createAppReducer = () =>
   combineReducers({
