@@ -1,6 +1,6 @@
 name: 'Chromatic Deployment'
 
-on: pull_request
+on: push
 
 jobs:
   deploy:
