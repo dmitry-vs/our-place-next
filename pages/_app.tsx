@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import '../styles/index.scss';
 import { getStateFromLocalStorage } from '../features/common/utils';
 import { useEffect, useState } from 'react';
+import Navigation from '../features/common/Navigation';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [store, setStore] = useState(createAppStore());
@@ -14,9 +15,20 @@ function MyApp({ Component, pageProps }: AppProps) {
     });
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('unhandledrejection', handlePromiseRejection);
+    return () => {
+      window.removeEventListener('unhandledrejection', handlePromiseRejection);
+    };
+  }, []);
+
+  const handlePromiseRejection = (e: PromiseRejectionEvent) => {
+    console.log('Promise rejection error:', e);
+  };
+
   return (
     <Provider store={store}>
-      <title>test</title>
+      <Navigation />
       <Component {...pageProps} />
     </Provider>
   );

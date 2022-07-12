@@ -1,15 +1,14 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import App from '../features/common/App';
+import MainPage from '../features/common/MainPage';
 
 const Home: NextPage = () => {
   return (
     <>
       <Head>
         <title>Our place</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <App />
+      <MainPage />
     </>
   );
 };
