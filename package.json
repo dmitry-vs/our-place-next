@@ -1,7 +1,9 @@
 {
   "name": "our-place-next",
-  "version": "0.1.0",
   "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,7 +14,9 @@
     "test:ci": "jest",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "loki": "npx loki test",
+    "loki:update": "npx loki update"
   },
   "dependencies": {
     "@emotion/css": "^11.9.0",
@@ -58,6 +62,7 @@
     "jest-environment-jsdom": "^28.1.2",
     "jest-svg-transformer": "^1.0.0",
     "lint-staged": "^13.0.3",
+    "loki": "^0.30.3",
     "prettier": "2.7.1",
     "redux-saga-test-plan": "^4.0.5",
     "sass": "^1.53.0",
@@ -65,6 +70,15 @@
     "ts-jest": "^28.0.5",
     "typescript": "4.7.4"
   },
-  "readme": "ERROR: No README data found!",
-  "_id": "our-place-next@0.1.0"
+  "loki": {
+    "configurations": {
+      "chrome.laptop": {
+        "target": "chrome.docker",
+        "width": 1366,
+        "height": 768,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      }
+    }
+  }
 }
