@@ -1,0 +1,15 @@
+name: 'Chromatic Deployment'
+
+on: pull_request
+
+jobs:
+  vercel-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mshick/add-pr-comment@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: |
+            You can check this code at Vercel with the link
+            https://our-place-next-git-dev-dmitry-vs.vercel.app/
