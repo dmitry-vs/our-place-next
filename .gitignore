@@ -39,3 +39,7 @@ yarn-error.log*
 
 # StoryBook
 build-storybook.log
+
+# Stryker
+/reports/
+/.stryker-tmp/

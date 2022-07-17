@@ -1,0 +1,9 @@
+{
+  "testRunner": "jest",
+  "mutate": [
+    "features/**/*.ts?(x)",
+    "!features/**/?(*.)+(spec|test|stories).ts?(x)"
+  ],
+  "checkers": ["typescript"],
+  "tsconfigFile": "tsconfig.json"
+}
