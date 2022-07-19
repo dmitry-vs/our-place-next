@@ -14,20 +14,22 @@ export const getTicTacToeGameResult = (
   for (let i = 0; i < TIC_TAC_TOE_FIELD_SIZE ** 2; i += 3) {
     const value = fieldValues[i];
     if (value === TicTacToeCellValues.Empty) continue;
-    if (value !== fieldValues[i + 1] || value !== fieldValues[i + 2]) continue;
-    return value === TicTacToeCellValues.Cross
-      ? TicTacToeGameResults.CrossWon
-      : TicTacToeGameResults.CircleWon;
+    if (value === fieldValues[i + 1] && value === fieldValues[i + 2]) {
+      return value === TicTacToeCellValues.Cross
+        ? TicTacToeGameResults.CrossWon
+        : TicTacToeGameResults.CircleWon;
+    }
   }
 
   // check cols
   for (let i = 0; i < 3; i++) {
     const value = fieldValues[i];
     if (value === TicTacToeCellValues.Empty) continue;
-    if (value !== fieldValues[i + 3] || value !== fieldValues[i + 6]) continue;
-    return value === TicTacToeCellValues.Cross
-      ? TicTacToeGameResults.CrossWon
-      : TicTacToeGameResults.CircleWon;
+    if (value === fieldValues[i + 3] && value === fieldValues[i + 6]) {
+      return value === TicTacToeCellValues.Cross
+        ? TicTacToeGameResults.CrossWon
+        : TicTacToeGameResults.CircleWon;
+    }
   }
 
   // check diagonals
@@ -66,6 +68,7 @@ export const getRandomFieldValues = (
   const cellsCount = getFieldRandomCellsCount(randomFillPercent);
   const cellsIndexes = getFieldRandomCellIndexes(cellsCount);
 
+  // Stryker disable all
   cellsIndexes.forEach((index) => {
     const value = sample([
       TicTacToeCellValues.Cross,
@@ -73,6 +76,7 @@ export const getRandomFieldValues = (
     ]);
     if (value !== undefined) result[index] = value;
   });
+  // Stryker restore all
 
   return result;
 };
@@ -84,10 +88,12 @@ export const getFieldRandomCellIndexes = (cellCount: number) => {
   const indexes = Array.from(Array(9).keys());
   const result: number[] = [];
 
+  // Stryker disable all
   for (let i = 0; i < Math.min(cellCount, 9); i++) {
     const index = sample(indexes.filter((item) => !result.includes(item)));
     if (index !== undefined) result.push(index);
   }
+  // Stryker restore all
 
   return result;
 };

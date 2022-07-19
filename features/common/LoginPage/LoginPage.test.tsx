@@ -5,6 +5,7 @@ import LoginPage from './LoginPage';
 import { Provider } from 'react-redux';
 import { createAppStore } from '../store';
 import { APP_NAME } from '../consts';
+import { login } from '../../auth/auth-slice';
 
 describe('LoginPage', () => {
   const user = userEvent.setup();
@@ -38,6 +39,7 @@ describe('LoginPage', () => {
     expect(page).toBeInTheDocument();
     expect(heading).toHaveTextContent(APP_NAME);
     expect(userNameInput).toBeInTheDocument();
+    expect(userNameInput).toHaveAttribute('spellCheck', 'false');
     expect(loginButton).toBeDisabled();
   });
 
@@ -66,6 +68,13 @@ describe('LoginPage', () => {
     await user.type(userNameInput, testUserName);
     await user.click(loginButton);
     expect(dispatchMock).toBeCalledTimes(1);
+    expect(dispatchMock).toBeCalledWith(login(testUserName));
+  });
+
+  test('given input is non-whitespace but starts and ends with space when button is clicked then value is trimmed', async () => {
+    await user.type(userNameInput, ` ${testUserName} `);
+    await user.click(loginButton);
+    expect(dispatchMock).toBeCalledWith(login(testUserName));
   });
 
   test('input non-whitespace and press enter then callback called', async () => {
