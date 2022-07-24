@@ -15,9 +15,9 @@
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "loki": "npx loki test",
-    "loki:update": "npx loki update",
-    "stryker": "npx stryker run"
+    "loki": "loki test",
+    "loki:update": "loki update",
+    "stryker": "stryker run"
   },
   "dependencies": {
     "@emotion/css": "^11.9.0",
