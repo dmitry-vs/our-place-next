@@ -1,34 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Our Place
 
-## Getting Started
+Приложение - игра Крестики-Нолики (Tic-Tac-Toe) на React JS
 
-First, run the development server:
+## Используемые технологии
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- TypeScript (есть несколько файлов на JS)
+- React (react-dom)
+- стили: CSS Modules, Sass, Emotion, Bootstrap
+- state-management: Redux (Redux Toolkit, Redux Saga)
+- тестирование: Jest (jest-dom, react-testing-library, redux-saga-test-plan)
+- SSR: NextJS (create-next-app)
+- роутинг: NextJS
+- regression тестирование: Loki
+- превью компонентов: StoryBook, Chromatic
+- deployment: Vercel
+- линтеры и стилизация кода: EsLint, Prettier, lint-staged
+- работа с локальным хранилищем: localforage
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Общее описание работы
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Приложение состоит из двух экранов: авторизации и главной страницы.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Экран авторизации
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+На данном экране расположено поле ввода имени пользователя.
 
-## Learn More
+Необходимо ввести имя пользователя, чтобы попасть на главную страницу приложения.
 
-To learn more about Next.js, take a look at the following resources:
+Имя пользователя не должно быть пустым или состоять только из "пробельных" символов (whitespace).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Главная страница
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+На данном экране можно: 
 
-## Deploy on Vercel
+- поиграть в игру TicTacToe
+- выйти (происходит редирект на экран авторизации)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Игра TicTacToe
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Компонент игры включает следующие основные элементы:
+
+- блок настройки параметров
+- игровое поле
+- блок отображения состояния игры
+- кнопка начала/окончания игры
+
+### Настройка параметров
+
+В данном блоке можно задать:
+
+- символ игрока (крестики или нолики); после начала игры и до её завершения менять выбранный символ нельзя
+- размер ячейки игрового поля (px): если введенное значение некорректно (допустимо целое число от 50 до 150), то в поле ввода и в игровом поле отображаются сообщения об ошибке
+- включение/выключение режима случайного заполнения: если данный режим включен, то при старте игры ячейки игрового поля предзаполняются случайными значениями (при этом игра может закончиться сразу после начала); после начала игры и до её завершения менять данную настройку нельзя
+- процент случайного заполнения: данное значение определяет, сколько ячеек игрового поля будет заполнено случайным образом при старте игры (допустимо целое число от 1 до 100); после начала игры и до её завершения менять данное значение нельзя
+
+### Игровое поле
+
+В данном блоке происходит собственно сама игра. 
+
+Если статус игры не "начата", то игровое поле заблокировано (disabled).
+
+Если статус игры "начата", то при нажатии на ячейку она заполняется символом игрока (например, крестик). После этого игра либо заканчивается, либо компьютер делает ответный ход. При этом другая ячейка заполняется символом компьютера (например, нолик).
+
+### Состояние игры
+
+Данный блок предназначен для отображения основных параметров игры:
+
+- Статус ("Игра не начата", "Игра начата", "Игра окончена")
+- Игрок (имя пользователя, которое было указано при входе на экране авторизации)
+- Символ игрока ("Крестики" или "Нолики")
+- Результат (пустое поле до завершения игры, после завершения - "Пользователь победил", "Пользователь проиграл" или "Ничья")
+
+### Кнопка начала/окончания игры
+
+С помощью данной кнопки можно начинать и завершать игру.
+
+Если в процессе игры нажать кнопку "Завершить игру", а потом - "Начать игру", то игра не продолжается, а начинается заново.  
+
+## Дополнительные особенности
+
+Состояние приложения сохраняется в локальном хранилище браузера (с помощью библиотеки localforage), поэтому при обновлении страницы все параметры и настройки должны сохранять свои значения.  

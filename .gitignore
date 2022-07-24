@@ -33,3 +33,13 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# IDE
+/.idea/
+
+# StoryBook
+build-storybook.log
+
+# Stryker
+/reports/
+/.stryker-tmp/
