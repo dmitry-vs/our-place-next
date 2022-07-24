@@ -23,11 +23,13 @@ const LoginPage: FC = () => {
       className="h-100 d-flex align-items-center text-center h-100"
     >
       <form
+        // Stryker disable all
         className={css`
           width: 100%;
           margin: auto;
           max-width: 300px;
         `}
+        // Stryker restore all
         onSubmit={handleFormSubmit}
       >
         <h1

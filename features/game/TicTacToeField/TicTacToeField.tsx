@@ -27,11 +27,13 @@ const TicTacToeField: FC<TicTacToeFieldProps> = ({
       role="tic-tac-toe-field"
       className={clsx(
         s.field,
+        // Stryker disable all
         css`
           width: ${TIC_TAC_TOE_FIELD_SIZE * cellSize}px;
           grid-template-rows: repeat(${TIC_TAC_TOE_FIELD_SIZE}, 1fr);
           grid-template-columns: repeat(${TIC_TAC_TOE_FIELD_SIZE}, 1fr);
         `,
+        // Stryker restore all
         className
       )}
     >
@@ -41,9 +43,11 @@ const TicTacToeField: FC<TicTacToeFieldProps> = ({
           value={item}
           className={clsx(
             s.cell,
+            // Stryker disable all
             css`
               height: ${cellSize}px;
             `
+            // Stryker restore all
           )}
           handleClick={() => handleCellClick(index)}
         />

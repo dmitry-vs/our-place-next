@@ -16,6 +16,7 @@ const TicTacToeCell: FC<TicTacToeCellProps> = ({
   const renderCellContent = () => {
     if (value === TicTacToeCellValues.Empty) return null;
 
+    // Stryker disable all
     const imgParamsMapping = {
       [TicTacToeCellValues.Cross]: {
         src: '/cross.svg',
@@ -30,6 +31,7 @@ const TicTacToeCell: FC<TicTacToeCellProps> = ({
         width: 30,
       },
     };
+    // Stryker restore all
     const { src, alt, height, width } = imgParamsMapping[value];
 
     return (
